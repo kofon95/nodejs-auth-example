@@ -1,3 +1,6 @@
+console.log('MONGODB_URI:')
+console.log(process.env.MONGODB_URI)
+
 global.util = require('util')
 
 var logger = require('morgan')
@@ -26,10 +29,12 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   secret: 'session-secret',
-  store: new MongoStore({url: 'mongodb://localhost'})
+  // store: new MongoStore({url: 'mongodb://localhost'})
+  store: new MongoStore({url: 'process.env.MONGODB_URI'})
 }))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(require('express-mongo-db')('mongodb://localhost/jssample'))
+// app.use(require('express-mongo-db')('mongodb://localhost/jssample'))
+app.use(require('express-mongo-db')(process.env.MONGODB_URI))
 
 app.use('/', require('./routes/index'))
 app.use('/login', require('./routes/login'))
