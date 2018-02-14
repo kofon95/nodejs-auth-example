@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  if user
+    h2 You authenticated as <b>"#{user._id}"</b> 
+      form(action="/delete" method="post" style="display: inline-block;"
+           onsubmit="return confirm('I wonder whether anyone comes here or not.\\nIf you do not care, please do not click OK button =).\\nIn case you do, I understand that')")
+        button(style="font-size: 50%;") (delete account)
+  else
+    h2 You are not authenticated
+
+  h3 Your #{util.inspect(session)}
+
+  div List of all users:
+    ol
+      each user in users
+        div= user._id

@@ -1,0 +1,9 @@
+extends layout
+block content
+  if error
+    div Error: #{error}
+
+  form(action="/register_post" method="post")
+    input(type="text" name="login" placeholder="New login")
+    input(type="password" name="password" placeholder="New password")
+    input(type="submit" value="Register")

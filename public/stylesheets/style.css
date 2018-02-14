@@ -1,0 +1,14 @@
+body {
+  padding: 10px 100px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.header-links {
+  margin-bottom: 30px;
+}
+.header-links>*{
+  background: #787878;
+  color: white;
+  margin: 2px;
+  padding: 10px;
+}

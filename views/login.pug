@@ -1,0 +1,8 @@
+extends layout
+block content
+  include validation-errors
+
+  form(action="/login_post" method="post")
+    input(type="text" name="login" placeholder="Login")
+    input(type="password" name="password" placeholder="Password")
+    input(type="submit" value="Log in")
