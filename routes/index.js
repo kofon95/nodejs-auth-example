@@ -6,7 +6,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   User.getUserList(req, users => {
     var id = req.session.login || null
-    var currentUser = id && users.find(u => u._id === id)
+    var currentUser = req.currentUser // id && users.find(u => u._id === id)
     res.render('index', { title: 'Main page', user: currentUser, users: users, session: req.session });
   })
 });

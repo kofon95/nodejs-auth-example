@@ -36,6 +36,7 @@ app.use(session({
 }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(require('express-mongo-db')(app.get('mongodb_uri')))
+app.use(require('./helpers/user_middleware'))
 
 app.use('/', require('./routes/index'))
 app.use('/login', require('./routes/login'))

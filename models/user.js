@@ -6,10 +6,7 @@ function getCurrentUser(req, cb) {
   var digest = req.session.digest
   if (!id || !digest)
     return cb(null)
-  req.db.collection('users').findOne({_id: id, digest: digest}, (err, foundUser) => {
-    if (err) throw err
-    cb(foundUser)
-  })
+  req.db.collection('users').findOne({_id: id, digest: digest}, cb)
 }
 
 function findUserById(req, id, cb) {
